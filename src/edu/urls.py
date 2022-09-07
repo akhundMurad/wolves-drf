@@ -1,20 +1,11 @@
-from django.urls import path
+from rest_framework.routers import SimpleRouter
 
-from edu.views import HomeworkCreateAPIView, HomeworkListAPIView
+from edu.views import HomeworkModelViewSet
 
 
 app_name = "edu"
 
+homework_router = SimpleRouter()
+homework_router.register(r'homework', HomeworkModelViewSet, basename='homework')
 
-urlpatterns = [
-    path(
-        '',
-        HomeworkListAPIView.as_view(),
-        name='homework-list'
-    ),
-    path(
-        'create/',
-        HomeworkCreateAPIView.as_view(),
-        name='homework-create'
-    ),
-]
+urlpatterns = homework_router.urls
