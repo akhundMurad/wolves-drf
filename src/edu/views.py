@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
+from rest_framework.permissions import IsAuthenticated
 
 from edu.models import Homework
 from edu.serializers.homework import HomeworkSerializer
@@ -11,6 +12,7 @@ from edu.serializers.homework import HomeworkSerializer
 class HomeworkModelViewSet(ModelViewSet):
     queryset = Homework.objects.all()
     serializer_class = HomeworkSerializer
+    permission_classes = (IsAuthenticated,)
 
     @action(methods=["POST"], detail=False)
     def bulk_create(self, request: Request) -> Response:
