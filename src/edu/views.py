@@ -9,6 +9,47 @@ from edu.models import Homework
 from edu.serializers.homework import HomeworkSerializer
 
 
+# @extend_schema_view(
+#     list=extend_schema(
+#         methods=['GET'],
+#         description='Get a list of homeworks',
+#         responses={
+#             200: HomeworkSerializer(many=True)
+#         }
+#     ),
+#     retrieve=extend_schema(
+#         methods=['GET'],
+#         description='Get homework',
+#         responses={
+#             200: HomeworkSerializer
+#         },
+#         parameters=[OpenApiParameter(
+#             name="pk",
+#             type=int,
+#             location=OpenApiParameter.PATH,
+#             required=True
+#         )]
+#     ),
+#     create=extend_schema(
+#         methods=['POST'],
+#         description='Create homework',
+#         responses={
+#             201: HomeworkSerializer,
+#             400: "Wrong request."
+#         },
+#         request=HomeworkSerializer,
+#         auth=
+#     ),
+#     bulk_create=extend_schema(
+#         methods=['POST'],
+#         description='Create homeworks',
+#         responses={
+#             201: HomeworkSerializer(many=True),
+#             400: "Wrong request."
+#         },
+#         request=HomeworkSerializer(many=True)
+#     ),
+# )
 class HomeworkModelViewSet(ModelViewSet):
     queryset = Homework.objects.all()
     serializer_class = HomeworkSerializer
