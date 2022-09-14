@@ -9,7 +9,7 @@ UserModel = get_user_model()
 
 class HomeworkSerializer(serializers.ModelSerializer):
     author = serializers.PrimaryKeyRelatedField(
-        default=serializers.CurrentUserDefault,
+        default=serializers.CurrentUserDefault(),
         queryset=UserModel.objects.all()
     )
 
